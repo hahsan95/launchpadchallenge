@@ -7,4 +7,5 @@ const Framework = db.define('framework', {
   }
 })
 
+
 module.exports = Framework
