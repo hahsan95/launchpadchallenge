@@ -1,6 +1,6 @@
 const User = require('./user')
 const Framework = require('./framework')
-const getReactCommits = require('../../frameworks/react')
+const functionRunner = require('../../frameworks/frameworkdata')
 
 /**
  * If we had any associations to make, this would be a great place to put them!
@@ -18,5 +18,5 @@ const getReactCommits = require('../../frameworks/react')
 module.exports = {
   User,
   Framework,
-  getReactCommits
+  functionRunner
 }
