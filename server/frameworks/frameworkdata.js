@@ -1,5 +1,16 @@
 const axios = require('axios')
-const Framework = require('../db/models/framework')
+const AngularCommit = require('../db/models/angularcommit')
+const AngularFork = require('../db/models/angularfork')
+const AngularPR = require('../db/models/angularpullrequest')
+const EmberCommit = require('../db/models/embercommit')
+const EmberFork = require('../db/models/emberfork')
+const EmberPR = require('../db/models/emberpullrequest')
+const ReactCommit = require('../db/models/reactcommit')
+const ReactFork = require('../db/models/reactfork')
+const ReactPR = require('../db/models/reactpullrequest')
+const VueCommit = require('../db/models/vuecommit')
+const VueFork = require('../db/models/vuefork')
+const VuePR = require('../db/models/vuepullrequest')
 
 let getInitialFrameworkData = async (framework) => {
   let forkResponses = await axios.get(`https://api.github.com/repos/${framework}/forks`)
@@ -7,9 +18,14 @@ let getInitialFrameworkData = async (framework) => {
   let prResponses = await axios.get(`https://api.github.com/repos/${framework}/pulls`)
   try {
     for(let i = 0; i < 30; i++){
-      console.log(`fork ${i+1}:`, forkResponses.data[i].created_at)
-      console.log(`commit ${i+1}:`, commitResponses.data[i].commit.author.date)
-      console.log(`pull request ${i+1}:`, prResponses.data[i].created_at)
+      let forkDate = forkResponses.data[i].created_at
+      let forkUSN = forkResponses.data[i].owner.login
+
+      let commitDate = commitResponses.data[i].commit.author.date
+      let commitUSN
+
+      let prDate = prResponses.data[i].created_at
+      let prUSN
     }
   }
   catch (err) {
@@ -18,14 +34,14 @@ let getInitialFrameworkData = async (framework) => {
 }
 
 let functionRunner = () => {
-  let frameworkURLs = {
-    Angular: 'angular/angular.js',
-    React: 'facebook/react',
-    Ember: 'emberjs/ember.js',
-    Vue: 'vuejs/vue'
+  let frameworkData = {
+    Angular: ['angular/angular.js', 'AngularCommit', 'AngularFork', 'AngularPR'],
+    React: ['facebook/react', 'ReactCommit', 'ReactFork', 'ReactPR'],
+    Ember: ['emberjs/ember.js', 'EmberCommit', 'EmberFork', 'EmberPR'],
+    Vue: ['vuejs/vue', 'VueCommit', 'VueFork', 'VuePR']
   }
-  for (let property in frameworkURLs) {
-    getInitialFrameworkData(frameworkURLs[property])
+  for (let property in frameworkData) {
+    getInitialFrameworkData(frameworkData[property][0])
   }
 }
 
