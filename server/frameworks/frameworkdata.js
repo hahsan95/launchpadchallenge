@@ -33,15 +33,18 @@ let getInitialFrameworkData = async (framework) => {
   }
 }
 
-let functionRunner = () => {
+let functionRunner = async () => {
   let frameworkData = {
-    Angular: ['angular/angular.js', 'AngularCommit', 'AngularFork', 'AngularPR'],
+    Angular: ['angular/angular.js', AngularCommit, 'AngularFork', 'AngularPR'],
     React: ['facebook/react', 'ReactCommit', 'ReactFork', 'ReactPR'],
     Ember: ['emberjs/ember.js', 'EmberCommit', 'EmberFork', 'EmberPR'],
     Vue: ['vuejs/vue', 'VueCommit', 'VueFork', 'VuePR']
   }
   for (let property in frameworkData) {
     getInitialFrameworkData(frameworkData[property][0])
+    frameworkData[property][1].create({
+      ownerLogin: await 'poop'
+    })
   }
 }
 
