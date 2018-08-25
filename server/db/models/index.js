@@ -1,5 +1,6 @@
 const User = require('./user')
 const Framework = require('./framework')
+const Vote = require('./votes')
 const functionRunner = require('../../frameworks/frameworkdata')
 
 /**
@@ -8,6 +9,9 @@ const functionRunner = require('../../frameworks/frameworkdata')
  *
  *    BlogPost.belongsTo(User)
  */
+
+ User.hasOne(Vote)
+ Vote.belongsTo(Framework)
 
 /**
  * We'll export all of our models here, so that any time a module needs a model,
@@ -18,5 +22,6 @@ const functionRunner = require('../../frameworks/frameworkdata')
 module.exports = {
   User,
   Framework,
+  Vote,
   functionRunner
 }
