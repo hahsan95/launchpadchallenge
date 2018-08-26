@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import { getFrameworksThunk } from '../store'
+import { Button } from 'semantic-ui-react'
 
 class FrameworkVoteForm extends Component {
 
@@ -14,7 +15,7 @@ class FrameworkVoteForm extends Component {
     let frameworks = this.props.frameworkList
     return(
       <div>
-        {frameworks.map(framework => <div key={framework.id}>{framework.name}</div>)}
+        {frameworks.map(framework => <div key={framework.id}>Name: {framework.name} <Button>votes: {framework.votes}</Button></div>)}
       </div>
     )
   }
