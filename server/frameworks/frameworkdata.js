@@ -100,5 +100,5 @@ let functionRunner = () => {
     getInitialFrameworkData(frameworkData[property])
   }
 }
-functionRunner()
+// functionRunner()
 // setInterval(functionRunner, 60000)
