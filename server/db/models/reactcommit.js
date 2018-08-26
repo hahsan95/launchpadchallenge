@@ -7,7 +7,7 @@ const ReactCommit = db.define('reactcommit', {
     allowNull: false
   },
   commitId: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.STRING,
     allowNull: false
   },
   date: {

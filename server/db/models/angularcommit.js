@@ -7,7 +7,7 @@ const AngularCommit = db.define('angularcommit', {
     allowNull: false
   },
   commitId: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.STRING,
     allowNull: false
   },
   date: {

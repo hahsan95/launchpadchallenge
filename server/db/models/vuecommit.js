@@ -7,7 +7,7 @@ const VueCommit = db.define('vuecommit', {
     allowNull: false
   },
   commitId: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.STRING,
     allowNull: false
   },
   date: {
