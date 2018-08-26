@@ -6,6 +6,10 @@ const VueFork = db.define('vuefork', {
     type: Sequelize.STRING,
     allowNull: false
   },
+  forkId: {
+    type: Sequelize.INTEGER,
+    allowNull: false
+  },
   date: {
     type: Sequelize.DATE,
     allowNull: false

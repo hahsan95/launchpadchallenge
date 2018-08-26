@@ -6,6 +6,10 @@ const AngularPR = db.define('angularpr', {
     type: Sequelize.STRING,
     allowNull: false
   },
+  prId: {
+    type: Sequelize.INTEGER,
+    allowNull: false
+  },
   date: {
     type: Sequelize.DATE,
     allowNull: false

@@ -6,6 +6,10 @@ const EmberCommit = db.define('embercommit', {
     type: Sequelize.STRING,
     allowNull: false
   },
+  commitId: {
+    type: Sequelize.INTEGER,
+    allowNull: false
+  },
   date: {
     type: Sequelize.DATE,
     allowNull: false

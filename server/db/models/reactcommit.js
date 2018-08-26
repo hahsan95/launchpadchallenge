@@ -6,6 +6,10 @@ const ReactCommit = db.define('reactcommit', {
     type: Sequelize.STRING,
     allowNull: false
   },
+  commitId: {
+    type: Sequelize.INTEGER,
+    allowNull: false
+  },
   date: {
     type: Sequelize.DATE,
     allowNull: false

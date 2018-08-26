@@ -6,6 +6,10 @@ const VuePR = db.define('vuepr', {
     type: Sequelize.STRING,
     allowNull: false
   },
+  forkId: {
+    type: Sequelize.INTEGER,
+    allowNull: false
+  },
   date: {
     type: Sequelize.DATE,
     allowNull: false

@@ -22,10 +22,10 @@ let getInitialFrameworkData = async (framework) => {
       let forkUSN = forkResponses.data[i].owner.login
 
       let commitDate = commitResponses.data[i].commit.author.date
-      let commitUSN
+      let commitUSN = commitResponses.data[i].commit.author.name
 
       let prDate = prResponses.data[i].created_at
-      let prUSN
+      let prUSN = prResponses.data[i].user.login
     }
   }
   catch (err) {
@@ -35,17 +35,17 @@ let getInitialFrameworkData = async (framework) => {
 
 let functionRunner = async () => {
   let frameworkData = {
-    Angular: ['angular/angular.js', AngularCommit, 'AngularFork', 'AngularPR'],
+    Angular: ['angular/angular.js', AngularCommit, AngularFork, AngularPR],
     React: ['facebook/react', 'ReactCommit', 'ReactFork', 'ReactPR'],
     Ember: ['emberjs/ember.js', 'EmberCommit', 'EmberFork', 'EmberPR'],
     Vue: ['vuejs/vue', 'VueCommit', 'VueFork', 'VuePR']
   }
   for (let property in frameworkData) {
     getInitialFrameworkData(frameworkData[property][0])
-    frameworkData[property][1].create({
-      ownerLogin: await 'poop'
-    })
+    // frameworkData[property][1].create({
+    //   ownerLogin: await 'poop'
+    // })
   }
 }
 
-setInterval(functionRunner, 3000)
+setInterval(functionRunner, 3600000)
