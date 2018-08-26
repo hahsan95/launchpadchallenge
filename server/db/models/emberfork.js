@@ -8,7 +8,7 @@ const EmberFork = db.define('emberfork', {
   },
   forkId: {
     type: Sequelize.INTEGER,
-    allowNull: false
+    allowNull: true
   },
   date: {
     type: Sequelize.DATE,

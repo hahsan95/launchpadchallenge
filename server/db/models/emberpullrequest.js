@@ -6,9 +6,9 @@ const EmberPR = db.define('emberpr', {
     type: Sequelize.STRING,
     allowNull: false
   },
-  forkId: {
+  prId: {
     type: Sequelize.INTEGER,
-    allowNull: false
+    allowNull: true
   },
   date: {
     type: Sequelize.DATE,

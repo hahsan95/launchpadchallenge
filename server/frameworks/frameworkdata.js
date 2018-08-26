@@ -13,10 +13,12 @@ const VueFork = require('../db/models/vuefork')
 const VuePR = require('../db/models/vuepullrequest')
 
 let getInitialFrameworkData = async (framework) => {
-  let forkResponses = await axios.get(`https://api.github.com/repos/${framework[0]}/forks`)
-  let commitResponses = await axios.get(`https://api.github.com/repos/${framework[0]}/commits`)
-  let prResponses = await axios.get(`https://api.github.com/repos/${framework[0]}/pulls`)
   try {
+
+    let forkResponses = await axios.get(`https://api.github.com/repos/${framework[0]}/forks`)
+    let commitResponses = await axios.get(`https://api.github.com/repos/${framework[0]}/commits`)
+    let prResponses = await axios.get(`https://api.github.com/repos/${framework[0]}/pulls`)
+
     for(let i = 0; i < 30; i++){
       let commitId = commitResponses.data[i].sha
       let commitDate = commitResponses.data[i].commit.author.date
@@ -24,17 +26,20 @@ let getInitialFrameworkData = async (framework) => {
 
       let commitCheck = await framework[1].findOne({
         where: {
-          commitId: await commitId
+          commitId: commitId
         }
       })
 
       if(!commitCheck){
         await framework[1].create({
-          commitId: await commitId,
-          ownerLogin: await commitUSN,
-          date: await commitDate
+          commitId: commitId,
+          ownerLogin: commitUSN,
+          date: commitDate
         })
+      } else {
+        console.log(`${framework[1]} already in DB`)
       }
+
 
 
       let forkId = forkResponses.data[i].id
@@ -43,16 +48,18 @@ let getInitialFrameworkData = async (framework) => {
 
       let forkCheck =  await framework[2].findOne({
         where: {
-          forkId: await forkId
+          forkId: forkId
         }
       })
 
       if(!forkCheck){
         await framework[2].create({
-          commitId: await forkId,
-          ownerLogin: await forkUSN,
-          date: await forkDate
+          commitId: forkId,
+          ownerLogin: forkUSN,
+          date: forkDate
         })
+      } else {
+        console.log(`${framework[2]} already in DB`)
       }
 
 
@@ -60,20 +67,20 @@ let getInitialFrameworkData = async (framework) => {
       let prDate = prResponses.data[i].created_at
       let prUSN = prResponses.data[i].user.login
 
-      let prCheck =  await framework[3].findOne({
+      let prCheck = await framework[3].findOne({
         where: {
-          prId: await prId
+          prId: prId
         }
       })
 
       if(!prCheck){
         await framework[3].create({
-          prId: await prId,
-          ownerLogin: await prUSN,
-          date: await prDate
+          prId: prId,
+          ownerLogin: prUSN,
+          date: prDate
         })
       } else {
-        console.log('already in DB')
+        console.log(`${framework[3]} already in DB`)
       }
     }
   }
@@ -82,7 +89,7 @@ let getInitialFrameworkData = async (framework) => {
   }
 }
 
-let functionRunner = async () => {
+let functionRunner = () => {
   let frameworkData = {
     Angular: ['angular/angular.js', AngularCommit, AngularFork, AngularPR],
     React: ['facebook/react', ReactCommit, ReactFork, ReactPR],
@@ -91,10 +98,7 @@ let functionRunner = async () => {
   }
   for (let property in frameworkData) {
     getInitialFrameworkData(frameworkData[property])
-    // frameworkData[property][1].create({
-    //   ownerLogin: await 'poop'
-    // })
   }
 }
-
-setInterval(functionRunner, 6000)
+functionRunner()
+// setInterval(functionRunner, 60000)

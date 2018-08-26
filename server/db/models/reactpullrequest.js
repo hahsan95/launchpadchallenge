@@ -6,9 +6,9 @@ const ReactPR = db.define('reactpr', {
     type: Sequelize.STRING,
     allowNull: false
   },
-  forkId: {
+  prId: {
     type: Sequelize.INTEGER,
-    allowNull: false
+    allowNull: true
   },
   date: {
     type: Sequelize.DATE,

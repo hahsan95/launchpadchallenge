@@ -8,7 +8,7 @@ const AngularFork = db.define('angularfork', {
   },
   forkId: {
     type: Sequelize.INTEGER,
-    allowNull: false
+    allowNull: true
   },
   date: {
     type: Sequelize.DATE,
