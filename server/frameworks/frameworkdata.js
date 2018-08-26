@@ -37,7 +37,7 @@ let getInitialFrameworkData = async (framework) => {
           date: commitDate
         })
       } else {
-        console.log(`${framework[1]} already in DB`)
+        console.log(`Commit already in DB`)
       }
 
 
@@ -45,6 +45,7 @@ let getInitialFrameworkData = async (framework) => {
       let forkId = forkResponses.data[i].id
       let forkDate = forkResponses.data[i].created_at
       let forkUSN = forkResponses.data[i].owner.login
+
 
       let forkCheck =  await framework[2].findOne({
         where: {
@@ -54,12 +55,12 @@ let getInitialFrameworkData = async (framework) => {
 
       if(!forkCheck){
         await framework[2].create({
-          commitId: forkId,
+          forkId: forkId,
           ownerLogin: forkUSN,
           date: forkDate
         })
       } else {
-        console.log(`${framework[2]} already in DB`)
+        console.log(`Fork already in DB`)
       }
 
 
@@ -80,7 +81,7 @@ let getInitialFrameworkData = async (framework) => {
           date: prDate
         })
       } else {
-        console.log(`${framework[3]} already in DB`)
+        console.log(`PR already in DB`)
       }
     }
   }
@@ -100,5 +101,12 @@ let functionRunner = () => {
     getInitialFrameworkData(frameworkData[property])
   }
 }
-// functionRunner()
+
+// let testingForkId = async () => {
+//   let forkResponses = await axios.get(`https://api.github.com/repos/angular/angular.js/forks`)
+//   let forkTest = forkResponses.data[0].id
+//   console.log('TESTID: ', forkTest)
+// }
+// testingForkId()
+functionRunner()
 // setInterval(functionRunner, 60000)

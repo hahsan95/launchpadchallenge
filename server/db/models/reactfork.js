@@ -8,7 +8,7 @@ const ReactFork = db.define('reactfork', {
   },
   forkId: {
     type: Sequelize.INTEGER,
-    allowNull: true
+    allowNull: false
   },
   date: {
     type: Sequelize.DATE,

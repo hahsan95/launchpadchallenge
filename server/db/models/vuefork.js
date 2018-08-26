@@ -8,7 +8,7 @@ const VueFork = db.define('vuefork', {
   },
   forkId: {
     type: Sequelize.INTEGER,
-    allowNull: true
+    allowNull: false
   },
   date: {
     type: Sequelize.DATE,
