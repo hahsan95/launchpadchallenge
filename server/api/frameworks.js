@@ -13,9 +13,26 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-router.post('/:frameworkId', async (req, res, next) => {
+router.put('/vote/:frameworkId', async (req, res, next) => {
   try {
-    let vote = await Framework.increment('votes', { where: {id: req.params.frameworkId} })
+    let vote = await Framework.increment('votes', {
+      where: {
+        id: req.params.frameworkId
+      }
+    })
+    res.json(vote)
+  } catch(err) {
+    next(err)
+  }
+})
+
+router.put('/unvote/:frameworkId', async (req, res, next) => {
+  try {
+    let vote = await Framework.decrement('votes', {
+      where: {
+        id: req.params.frameworkId
+      }
+    })
     res.json(vote)
   } catch(err) {
     next(err)

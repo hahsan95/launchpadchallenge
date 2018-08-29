@@ -108,5 +108,5 @@ let functionRunner = () => {
 //   console.log('TESTID: ', forkTest)
 // }
 // testingForkId()
-functionRunner()
+// functionRunner()
 // setInterval(functionRunner, 60000)
