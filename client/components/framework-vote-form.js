@@ -26,48 +26,56 @@ class FrameworkVoteForm extends Component {
     }
   }
 
-  handleVoteReact = () => {
+  handleVoteReact = async () => {
     this.setState({ hasVoted: true, hasVotedFor: {React: true, Angular: false, Ember: false, Vue: false}})
-    return axios.put(`api/frameworks/vote/1`, {})
+    await axios.put(`api/frameworks/vote/1`, {})
+    await this.props.getFrameworksThunk()
   }
 
-  handleUnVoteReact = () => {
+  handleUnVoteReact = async () => {
     this.setState({ hasVoted: false, hasVotedFor: {React: false, Angular: false, Embger: false, Vue: false}})
-    return axios.put(`api/frameworks/unvote/1`, {})
+    await axios.put(`api/frameworks/unvote/1`, {})
+    await this.props.getFrameworksThunk()
   }
 
-  handleVoteAngular = () => {
+  handleVoteAngular = async () => {
     this.setState({ hasVoted: true, hasVotedFor: {React: false, Angular: true, Ember: false, Vue: false}})
-    return axios.put(`api/frameworks/vote/2`, {})
+    await axios.put(`api/frameworks/vote/2`, {})
+    await this.props.getFrameworksThunk()
   }
 
-  handleUnVoteAngular = () => {
+  handleUnVoteAngular = async () => {
     this.setState({ hasVoted: false, hasVotedFor: {React: false, Angular: false, Embger: false, Vue: false}})
-    return axios.put(`api/frameworks/unvote/2`, {})
+    await axios.put(`api/frameworks/unvote/2`, {})
+    await this.props.getFrameworksThunk()
   }
 
-  handleVoteEmber = () => {
+  handleVoteEmber = async () => {
     this.setState({ hasVoted: true, hasVotedFor: {React: false, Angular: false, Ember: true, Vue: false}})
-    return axios.put(`api/frameworks/vote/3`, {})
+    await axios.put(`api/frameworks/vote/3`, {})
+    await this.props.getFrameworksThunk()
   }
 
-  handleUnVoteEmber = () => {
+  handleUnVoteEmber = async () => {
     this.setState({ hasVoted: false, hasVotedFor: {React: false, Angular: false, Embger: false, Vue: false}})
-    return axios.put(`api/frameworks/unvote/3`, {})
+    await axios.put(`api/frameworks/unvote/3`, {})
+    await this.props.getFrameworksThunk()
   }
 
-  handleVoteVue = () => {
+  handleVoteVue = async() => {
     this.setState({ hasVoted: true, hasVotedFor: {React: false, Angular: false, Ember: false, Vue: true}})
-    return axios.put(`api/frameworks/vote/4`, {})
+    await axios.put(`api/frameworks/vote/4`, {})
+    await this.props.getFrameworksThunk()
   }
 
-  handleUnVoteVue = () => {
+  handleUnVoteVue = async () => {
     this.setState({ hasVoted: false, hasVotedFor: {React: false, Angular: false, Embger: false, Vue: false}})
-    return axios.put(`api/frameworks/unvote/4`, {})
+    await axios.put(`api/frameworks/unvote/4`, {})
+    await this.props.getFrameworksThunk()
   }
 
 
-  render(){
+  render () {
     let frameworks = this.props.frameworkList.sort((a, b) => a.id > b.id)
     return(
       <div>
@@ -78,8 +86,8 @@ class FrameworkVoteForm extends Component {
           {!this.state.hasVotedFor.React && !this.state.hasVoted ?
            <Button onClick={this.handleVoteReact}>Votes {frameworks[0].votes}</Button> :
             (!this.state.hasVotedFor.React && this.state.hasVoted ?
-            <Button disabled>React</Button> :
-            <Button onClick={this.handleUnVoteReact}>Unvote</Button>
+            <Button disabled>React {frameworks[0].votes}</Button> :
+            <Button onClick={this.handleUnVoteReact}>Unvote {frameworks[0].votes}</Button>
             )
           }
 
@@ -87,8 +95,8 @@ class FrameworkVoteForm extends Component {
           {!this.state.hasVotedFor.Angular && !this.state.hasVoted ?
            <Button onClick={this.handleVoteAngular}>Votes {frameworks[1].votes}</Button> :
             (!this.state.hasVotedFor.Angular && this.state.hasVoted ?
-            <Button disabled>Angular</Button> :
-            <Button onClick={this.handleUnVoteAngular}>Unvote</Button>
+            <Button disabled>Angular {frameworks[1].votes}</Button> :
+            <Button onClick={this.handleUnVoteAngular}>Unvote {frameworks[1].votes}</Button>
             )
           }
 
@@ -96,8 +104,8 @@ class FrameworkVoteForm extends Component {
           {!this.state.hasVotedFor.Ember && !this.state.hasVoted ?
            <Button onClick={this.handleVoteEmber}>Votes {frameworks[2].votes}</Button> :
             (!this.state.hasVotedFor.Ember && this.state.hasVoted ?
-            <Button disabled>Ember</Button> :
-            <Button onClick={this.handleUnVoteEmber}>Unvote</Button>
+            <Button disabled>Ember {frameworks[2].votes}</Button> :
+            <Button onClick={this.handleUnVoteEmber}>Unvote {frameworks[2].votes}</Button>
             )
           }
 
@@ -105,8 +113,8 @@ class FrameworkVoteForm extends Component {
           {!this.state.hasVotedFor.Vue && !this.state.hasVoted ?
            <Button onClick={this.handleVoteVue}>Votes {frameworks[3].votes}</Button> :
             (!this.state.hasVotedFor.Vue && this.state.hasVoted ?
-            <Button disabled>Vue</Button> :
-            <Button onClick={this.handleUnVoteVue}>Unvote</Button>
+            <Button disabled>Vue {frameworks[3].votes}</Button> :
+            <Button onClick={this.handleUnVoteVue}>Unvote {frameworks[3].votes}</Button>
             )
           }
 
@@ -115,12 +123,6 @@ class FrameworkVoteForm extends Component {
             <Loader inverted>Loading Framework Data</Loader>
           </Dimmer>
         }
-
-
-        {/* {frameworks.map(framework => <div key={framework.id}>Name: {framework.name}
-        <Button
-        onClick={this.handleVote}
-        >votes {framework.votes}</Button></div>)} */}
       </div>
     )
   }
