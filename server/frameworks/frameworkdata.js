@@ -91,6 +91,7 @@ let getInitialFrameworkData = async (framework) => {
 }
 
 let functionRunner = () => {
+  console.log('Checking for new GitHub updates')
   let frameworkData = {
     Angular: ['angular/angular.js', AngularCommit, AngularFork, AngularPR],
     React: ['facebook/react', ReactCommit, ReactFork, ReactPR],
@@ -109,4 +110,4 @@ let functionRunner = () => {
 // }
 // testingForkId()
 // functionRunner()
-// setInterval(functionRunner, 60000)
+setInterval(functionRunner, 3600000)
