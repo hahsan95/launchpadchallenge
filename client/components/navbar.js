@@ -14,7 +14,7 @@ const LogoStyle = styled.div`
 
 const Links = styled.div`
   margin-top: 25px;
-  margin-left: 700px;
+  margin-left: 625px;
 `
 
 const Navbar = ({handleClick, isLoggedIn}) => (
@@ -34,6 +34,7 @@ const Navbar = ({handleClick, isLoggedIn}) => (
         <Links>
           {/* The navbar will show these links after you log in */}
           <Link to="/data"><Button color='blue'>Home</Button></Link>
+          <Link to="/about"><Button color='blue'>About</Button></Link>
           <Link to="/voting"><Button color='blue'>Vote</Button></Link>
           <a href="#" onClick={handleClick}>
             <Button color='blue'>Logout</Button>
@@ -43,6 +44,7 @@ const Navbar = ({handleClick, isLoggedIn}) => (
         <Links>
           {/* The navbar will show these links before you log in */}
           <Link to="/data"><Button color='blue'>Home</Button></Link>
+          <Link to="/about"><Button color='blue'>About</Button></Link>
           <Link to="/login"><Button color='blue'>Login</Button></Link>
         </Links>
       )}

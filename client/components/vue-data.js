@@ -29,6 +29,9 @@ class VueData extends Component {
     let vueforks = this.props.vueforks.length
     let vuecommits = this.props.vuecommits.length
     let vueprs = this.props.vueprs.length
+    setInterval(this.props.getVueForksThunk, 36000000)
+    setInterval(this.props.getVueCommitsThunk, 36000000)
+    setInterval(this.props.getVuePrsThunk, 36000000)
     return (
       <Wrapper>
         <Segment>

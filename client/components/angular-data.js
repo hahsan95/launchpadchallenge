@@ -28,6 +28,9 @@ class AngularData extends Component {
     let forks = this.props.forks.length
     let commits = this.props.commits.length
     let prs = this.props.prs.length
+    setInterval(this.props.getAngularForksThunk, 36000000)
+    setInterval(this.props.getAngularCommitsThunk, 36000000)
+    setInterval(this.props.getAngularPrsThunk, 36000000)
     return (
       <Wrapper>
         <Segment>

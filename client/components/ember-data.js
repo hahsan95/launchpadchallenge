@@ -27,6 +27,9 @@ class EmberData extends Component {
     let forks = this.props.forks.length
     let commits = this.props.commits.length
     let prs = this.props.prs.length
+    setInterval(this.props.getEmberForksThunk, 36000000)
+    setInterval(this.props.getEmberCommitsThunk, 36000000)
+    setInterval(this.props.getEmberPrsThunk, 36000000)
     return (
       <Wrapper>
         <Segment>

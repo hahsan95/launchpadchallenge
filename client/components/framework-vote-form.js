@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import { getFrameworksThunk, getUserVotesThunk } from '../store'
-import { Button, Dimmer, Loader, Card, Icon } from 'semantic-ui-react'
+import { Button, Dimmer, Loader, Card, Icon, Header } from 'semantic-ui-react'
 import styled from 'styled-components'
 import axios from 'axios'
 
@@ -94,6 +94,7 @@ class FrameworkVoteForm extends Component {
     let user = this.props.votes[0]
     return(
       <CardWrapper>
+      <Header as='h2'>Cast Your Vote</Header>
         {
           this.props.frameworkList.length && this.props.votes.length ?
           <Card.Group>
