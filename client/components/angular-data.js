@@ -28,7 +28,6 @@ class AngularData extends Component {
     let forks = this.props.forks.length
     let commits = this.props.commits.length
     let prs = this.props.prs.length
-    console.log('Angular: ', forks, commits, prs)
     return (
       <Wrapper>
         <Segment>

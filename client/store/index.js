@@ -8,14 +8,16 @@ import angularData from './angulardata'
 import reactData from './reactdata'
 import emberData from './emberdata'
 import vueData from './vuedata'
+import userVotes from './userdata'
 
-const reducer = combineReducers({user, frameworks, angularData, reactData, emberData, vueData})
+const reducer = combineReducers({user, frameworks, angularData, reactData, emberData, vueData, userVotes})
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
 )
 const store = createStore(reducer, middleware)
 
 export default store
+export * from './userdata'
 export * from './vuedata'
 export * from './emberdata'
 export * from './reactdata'

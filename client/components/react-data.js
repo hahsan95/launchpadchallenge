@@ -28,7 +28,6 @@ class ReactData extends Component {
     let forks = this.props.forks.length
     let commits = this.props.commits.length
     let prs = this.props.prs.length
-    console.log('React: ', forks, commits, prs, this.props)
     return (
       <Wrapper>
         <Segment>

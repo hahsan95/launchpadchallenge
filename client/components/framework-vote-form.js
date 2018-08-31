@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
-import { getFrameworksThunk } from '../store'
+import { getFrameworksThunk, getUserVotesThunk } from '../store'
 import { Button, Dimmer, Loader, Card, Icon } from 'semantic-ui-react'
 import styled from 'styled-components'
 import axios from 'axios'
@@ -36,6 +36,9 @@ class FrameworkVoteForm extends Component {
   async componentDidMount() {
     if (this.props.frameworkList.length === 0) {
       await this.props.getFrameworksThunk()
+    }
+    if (this.props.votes.length === 0) {
+      await this.props.getUserVotesThunk()
     }
   }
 
@@ -90,7 +93,6 @@ class FrameworkVoteForm extends Component {
 
   render () {
     let frameworks = this.props.frameworkList.sort((a, b) => a.id > b.id)
-
     return(
       <CardWrapper>
         {
@@ -165,13 +167,15 @@ class FrameworkVoteForm extends Component {
 
 const mapStateToProps = (store) => {
   return {
-    frameworkList: store.frameworks.frameworkList
+    frameworkList: store.frameworks.frameworkList,
+    votes: store.userVotes.votes
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getFrameworksThunk: () => dispatch(getFrameworksThunk())
+    getFrameworksThunk: () => dispatch(getFrameworksThunk()),
+    getUserVotesThunk: () => dispatch(getUserVotesThunk())
   }
 }
 

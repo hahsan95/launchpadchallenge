@@ -29,7 +29,6 @@ class VueData extends Component {
     let vueforks = this.props.vueforks.length
     let vuecommits = this.props.vuecommits.length
     let vueprs = this.props.vueprs.length
-    console.log('Vue: ', vueforks, vuecommits, vueprs, this.props)
     return (
       <Wrapper>
         <Segment>
