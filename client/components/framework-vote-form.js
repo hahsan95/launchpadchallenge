@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
-import { getFrameworksThunk, me } from '../store'
-import { Button, Dimmer, Loader, Card, Icon, Image } from 'semantic-ui-react'
+import { getFrameworksThunk } from '../store'
+import { Button, Dimmer, Loader, Card, Icon } from 'semantic-ui-react'
 import styled from 'styled-components'
 import axios from 'axios'
 
