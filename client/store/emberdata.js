@@ -3,9 +3,9 @@ import axios from 'axios'
 /**
  * ACTION TYPES
  */
-const GET_ALL_FORKS = 'GET_ALL_FORKS'
-const GET_ALL_COMMITS = 'GET_ALL_COMMITS'
-const GET_ALL_PRS = 'GET_ALL_PRS'
+const GET_EMBER_FORKS = 'GET_EMBER_FORKS'
+const GET_EMBER_COMMITS = 'GET_EMBER_COMMITS'
+const GET_EMBER_PRS = 'GET_EMBER_PRS'
 
 /**
  * INITIAL STATE
@@ -19,9 +19,9 @@ const emberData = {
 /**
  * ACTION CREATORS
  */
-const getEmberForks = forks => ({type: GET_ALL_FORKS, forks})
-const getEmberCommits = commits => ({type: GET_ALL_COMMITS, commits})
-const getEmberPRs = prs => ({type: GET_ALL_PRS, prs})
+const getEmberForks = forks => ({type: GET_EMBER_FORKS, forks})
+const getEmberCommits = commits => ({type: GET_EMBER_COMMITS, commits})
+const getEmberPRs = prs => ({type: GET_EMBER_PRS, prs})
 
 /**
  * THUNK CREATORS
@@ -55,11 +55,11 @@ export const getEmberPrsThunk = () => {
  */
 export default function (state = emberData, action) {
   switch (action.type) {
-    case GET_ALL_FORKS:
+    case GET_EMBER_FORKS:
       return { ...state, forks: action.forks }
-    case GET_ALL_COMMITS:
+    case GET_EMBER_COMMITS:
       return { ...state, commits: action.commits}
-    case GET_ALL_PRS:
+    case GET_EMBER_PRS:
     return { ...state, prs: action.prs}
     default:
       return state

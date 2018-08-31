@@ -1,6 +1,13 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import { getEmberForksThunk, getEmberCommitsThunk, getEmberPrsThunk } from '../store';
+import { Segment, Divider, Progress } from 'semantic-ui-react'
+import styled from 'styled-components'
+
+const Wrapper = styled.div`
+  margin-left: 20px;
+  margin-right: 20px;
+`
 
 class EmberData extends Component {
 
@@ -17,10 +24,20 @@ class EmberData extends Component {
   }
 
   render () {
+    let forks = this.props.forks.length
+    let commits = this.props.commits.length
+    let prs = this.props.prs.length
+    console.log('Ember: ', forks, commits, prs)
     return (
-      <div>
-        <h3>Data Goes Here</h3>
-      </div>
+      <Wrapper>
+        <Segment>
+          <h3>Ember</h3>
+          <Progress color='orange' active  size='small' value={forks} total={30}>{forks} Forks</Progress>
+          <Progress color='orange' active  size='small' value={commits} total={40}>{commits} Commits</Progress>
+          <Progress color='orange' active  size='small' value={prs} total={40}>{prs} Pull Requests</Progress>
+        </Segment>
+        <Divider />
+      </Wrapper>
     )
   }
 }

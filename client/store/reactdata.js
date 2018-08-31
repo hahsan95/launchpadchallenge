@@ -3,9 +3,9 @@ import axios from 'axios'
 /**
  * ACTION TYPES
  */
-const GET_ALL_FORKS = 'GET_ALL_FORKS'
-const GET_ALL_COMMITS = 'GET_ALL_COMMITS'
-const GET_ALL_PRS = 'GET_ALL_PRS'
+const GET_REACT_FORKS = 'GET_REACT_FORKS'
+const GET_REACT_COMMITS = 'GET_REACT_COMMITS'
+const GET_REACT_PRS = 'GET_REACT_PRS'
 
 /**
  * INITIAL STATE
@@ -19,9 +19,9 @@ const reactData = {
 /**
  * ACTION CREATORS
  */
-const getReactForks = forks => ({type: GET_ALL_FORKS, forks})
-const getReactCommits = commits => ({type: GET_ALL_COMMITS, commits})
-const getReactPRs = prs => ({type: GET_ALL_PRS, prs})
+const getReactForks = forks => ({type: GET_REACT_FORKS, forks})
+const getReactCommits = commits => ({type: GET_REACT_COMMITS, commits})
+const getReactPRs = prs => ({type: GET_REACT_PRS, prs})
 
 /**
  * THUNK CREATORS
@@ -55,11 +55,11 @@ export const getReactPrsThunk = () => {
  */
 export default function (state = reactData, action) {
   switch (action.type) {
-    case GET_ALL_FORKS:
+    case GET_REACT_FORKS:
       return { ...state, forks: action.forks }
-    case GET_ALL_COMMITS:
+    case GET_REACT_COMMITS:
       return { ...state, commits: action.commits}
-    case GET_ALL_PRS:
+    case GET_REACT_PRS:
     return { ...state, prs: action.prs}
     default:
       return state

@@ -98,7 +98,7 @@ class FrameworkVoteForm extends Component {
           <Card.Group>
 
           <Card>
-          <IconWrapper><Icon name='react' size='huge' /></IconWrapper>
+          <IconWrapper><Icon name='react' color='blue' size='huge' /></IconWrapper>
           <Card.Header><h3 style={{'textAlign':'center'}}>{frameworks[0].name}</h3></Card.Header>
           <Card.Description><h4 style={{'textAlign':'center', 'margin-bottom': '10px'}}>{frameworks[0].votes} Votes</h4> </Card.Description>
           {!this.state.hasVotedFor.React && !this.state.hasVoted ?
@@ -111,7 +111,7 @@ class FrameworkVoteForm extends Component {
           </Card>
 
           <Card>
-          <IconWrapper><Icon name='angular' size='huge' /></IconWrapper>
+          <IconWrapper><Icon name='angular' color='red' size='huge' /></IconWrapper>
           <Card.Header><h3 style={{'textAlign':'center'}}>{frameworks[1].name}</h3></Card.Header>
           <Card.Description><h4 style={{'textAlign':'center', 'margin-bottom': '10px'}}>{frameworks[1].votes} Votes</h4> </Card.Description>
           {!this.state.hasVotedFor.Angular && !this.state.hasVoted ?
@@ -124,7 +124,7 @@ class FrameworkVoteForm extends Component {
           </Card>
 
           <Card>
-          <IconWrapper><Icon name='ember' size='huge' style={{alignItems:'center'}} /></IconWrapper>
+          <IconWrapper><Icon name='ember' color='orange' size='huge' style={{alignItems:'center'}} /></IconWrapper>
           <Card.Header><h3 style={{'textAlign':'center'}}>{frameworks[2].name}</h3></Card.Header>
           <Card.Description><h4 style={{'textAlign':'center', 'margin-bottom': '10px'}}>{frameworks[2].votes} Votes</h4> </Card.Description>
           {!this.state.hasVotedFor.Ember && !this.state.hasVoted ?
@@ -137,7 +137,7 @@ class FrameworkVoteForm extends Component {
           </Card>
 
           <Card>
-          <IconWrapper><Icon name='vuejs' size='huge' /></IconWrapper>
+          <IconWrapper><Icon name='vuejs' color='green' size='huge' /></IconWrapper>
           <Card.Header><h3 style={{'textAlign':'center'}}>{frameworks[3].name}</h3></Card.Header>
           <Card.Description><h4 style={{'textAlign':'center', 'margin-bottom': '10px'}}>{frameworks[3].votes} Votes</h4> </Card.Description>
           {!this.state.hasVotedFor.Vue && !this.state.hasVoted ?

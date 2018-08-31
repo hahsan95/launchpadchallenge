@@ -3,9 +3,9 @@ import axios from 'axios'
 /**
  * ACTION TYPES
  */
-const GET_ALL_FORKS = 'GET_ALL_FORKS'
-const GET_ALL_COMMITS = 'GET_ALL_COMMITS'
-const GET_ALL_PRS = 'GET_ALL_PRS'
+const GET_ANGUAR_FORKS = 'GET_ANGUAR_FORKS'
+const GET_ANGULAR_COMMITS = 'GET_ANGULAR_COMMITS'
+const GET_ANGULAR_PRS = 'GET_ANGULAR_PRS'
 
 /**
  * INITIAL STATE
@@ -19,9 +19,9 @@ const angularData = {
 /**
  * ACTION CREATORS
  */
-const getAngularForks = forks => ({type: GET_ALL_FORKS, forks})
-const getAngularCommits = commits => ({type: GET_ALL_COMMITS, commits})
-const getAngularPRs = prs => ({type: GET_ALL_PRS, prs})
+const getAngularForks = forks => ({type: GET_ANGUAR_FORKS, forks})
+const getAngularCommits = commits => ({type: GET_ANGULAR_COMMITS, commits})
+const getAngularPRs = prs => ({type: GET_ANGULAR_PRS, prs})
 
 /**
  * THUNK CREATORS
@@ -55,11 +55,11 @@ export const getAngularPrsThunk = () => {
  */
 export default function (state = angularData, action) {
   switch (action.type) {
-    case GET_ALL_FORKS:
+    case GET_ANGUAR_FORKS:
       return { ...state, forks: action.forks }
-    case GET_ALL_COMMITS:
+    case GET_ANGULAR_COMMITS:
       return { ...state, commits: action.commits}
-    case GET_ALL_PRS:
+    case GET_ANGULAR_PRS:
     return { ...state, prs: action.prs}
     default:
       return state

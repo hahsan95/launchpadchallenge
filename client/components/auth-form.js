@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {auth} from '../store'
-import { Button, Form } from 'semantic-ui-react'
+import { Button, Form, Divider } from 'semantic-ui-react'
 import styled from 'styled-components'
 
 const ButtonStyle = styled.div`

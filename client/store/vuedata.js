@@ -3,9 +3,9 @@ import axios from 'axios'
 /**
  * ACTION TYPES
  */
-const GET_ALL_FORKS = 'GET_ALL_FORKS'
-const GET_ALL_COMMITS = 'GET_ALL_COMMITS'
-const GET_ALL_PRS = 'GET_ALL_PRS'
+const GET_VUE_FORKS = 'GET_VUE_FORKS'
+const GET_VUE_COMMITS = 'GET_VUE_COMMITS'
+const GET_VUE_PRS = 'GET_VUE_PRS'
 
 /**
  * INITIAL STATE
@@ -19,9 +19,9 @@ const vueData = {
 /**
  * ACTION CREATORS
  */
-const getVueForks = forks => ({type: GET_ALL_FORKS, forks})
-const getVueCommits = commits => ({type: GET_ALL_COMMITS, commits})
-const getVuePRs = prs => ({type: GET_ALL_PRS, prs})
+const getVueForks = forks => ({type: GET_VUE_FORKS, forks})
+const getVueCommits = commits => ({type: GET_VUE_COMMITS, commits})
+const getVuePRs = prs => ({type: GET_VUE_PRS, prs})
 
 /**
  * THUNK CREATORS
@@ -55,11 +55,11 @@ export const getVuePrsThunk = () => {
  */
 export default function (state = vueData, action) {
   switch (action.type) {
-    case GET_ALL_FORKS:
+    case GET_VUE_FORKS:
       return { ...state, forks: action.forks }
-    case GET_ALL_COMMITS:
+    case GET_VUE_COMMITS:
       return { ...state, commits: action.commits}
-    case GET_ALL_PRS:
+    case GET_VUE_PRS:
     return { ...state, prs: action.prs}
     default:
       return state

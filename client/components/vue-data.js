@@ -1,35 +1,53 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import { getVueForksThunk, getVueCommitsThunk, getVuePrsThunk } from '../store';
+import { Segment, Progress } from 'semantic-ui-react'
+import styled from 'styled-components'
+
+const Wrapper = styled.div`
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 15px;
+`
+
 
 class VueData extends Component {
 
   async componentDidMount() {
-    if (this.props.forks.length === 0) {
+    if (this.props.vueforks.length === 0) {
       await this.props.getVueForksThunk()
     }
-    if (this.props.commits.length === 0) {
+    if (this.props.vuecommits.length === 0) {
       await this.props.getVueCommitsThunk()
     }
-    if (this.props.prs.length === 0){
+    if (this.props.vueprs.length === 0){
       await this.props.getVuePrsThunk()
     }
   }
 
   render () {
+    let vueforks = this.props.vueforks.length
+    let vuecommits = this.props.vuecommits.length
+    let vueprs = this.props.vueprs.length
+    console.log('Vue: ', vueforks, vuecommits, vueprs, this.props)
     return (
-      <div>
-        <h3>Data Goes Here</h3>
-      </div>
+      <Wrapper>
+        <Segment>
+          <h3>Vue</h3>
+          <Progress color='green' active  size='small' value={vueforks} total={30}>{vueforks} Forks</Progress>
+          <Progress color='green' active  size='small' value={vuecommits} total={40}>{vuecommits} Commits</Progress>
+          <Progress color='green' active  size='small' value={vueprs} total={40}>{vueprs} Pull Requests</Progress>
+        </Segment>
+      </Wrapper>
     )
   }
 }
 
 const mapStateToProps = (store) => {
   return {
-    forks: store.vueData.forks,
-    commits: store.vueData.commits,
-    prs: store.vueData.prs
+    vueforks: store.vueData.forks,
+    vuecommits: store.vueData.commits,
+    vueprs: store.vueData.prs
   }
 }
 
