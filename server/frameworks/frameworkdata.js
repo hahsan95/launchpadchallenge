@@ -90,7 +90,7 @@ let getInitialFrameworkData = async (framework) => {
   }
 }
 
-let functionRunner = () => {
+let mainFunction = () => {
   console.log('Checking for new GitHub updates')
   let frameworkData = {
     Angular: ['angular/angular.js', AngularCommit, AngularFork, AngularPR],
@@ -103,11 +103,9 @@ let functionRunner = () => {
   }
 }
 
-// let testingForkId = async () => {
-//   let forkResponses = await axios.get(`https://api.github.com/repos/angular/angular.js/forks`)
-//   let forkTest = forkResponses.data[0].id
-//   console.log('TESTID: ', forkTest)
-// }
-// testingForkId()
-// functionRunner()
-setInterval(functionRunner, 3600000)
+let functionRunner = (func) => {
+  // func()
+  setInterval(func, 3600000)
+}
+
+functionRunner(mainFunction)
