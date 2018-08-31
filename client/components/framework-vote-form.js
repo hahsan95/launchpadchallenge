@@ -1,11 +1,9 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import { getFrameworksThunk, me } from '../store'
-import { Button, Dimmer, Loader } from 'semantic-ui-react'
+import { Button, Dimmer, Loader, Card, Image } from 'semantic-ui-react'
 import { VictoryBar } from 'victory'
 import axios from 'axios';
-
-
 
 class FrameworkVoteForm extends Component {
   constructor (props) {
@@ -89,48 +87,65 @@ class FrameworkVoteForm extends Component {
       <div>
         {
           this.props.frameworkList.length ?
-          <div>
-          Name: {frameworks[0].name}
+          <Card.Group>
+
+          <Card>
+          <Image size='mini' src='https://arcweb.co/wp-content/uploads/2016/10/react-logo-1000-transparent.png'/>
+          <Card.Header><h3 style={{'textAlign':'center'}}>{frameworks[0].name}</h3></Card.Header>
+          <Card.Description><h4 style={{'textAlign':'center'}}>{frameworks[0].votes} Votes</h4> </Card.Description>
           {!this.state.hasVotedFor.React && !this.state.hasVoted ?
-           <Button onClick={this.handleVoteReact}>Votes {frameworks[0].votes}</Button> :
+           <Button basic color='green' onClick={this.handleVoteReact}>Vote for React</Button> :
             (!this.state.hasVotedFor.React && this.state.hasVoted ?
-            <Button disabled>React {frameworks[0].votes}</Button> :
-            <Button onClick={this.handleUnVoteReact}>Unvote {frameworks[0].votes}</Button>
+            <Button basic color='green' disabled>React {frameworks[0].votes}</Button> :
+            <Button basic color='red' onClick={this.handleUnVoteReact}>Remove Vote</Button>
             )
           }
+          </Card>
 
-          Name: {frameworks[1].name}
+          <Card>
+          <Image size='mini' src='https://upload.wikimedia.org/wikipedia/commons/c/cf/Angular_full_color_logo.svg' />
+          <Card.Header><h3 style={{'textAlign':'center'}}>{frameworks[1].name}</h3></Card.Header>
+          <Card.Description><h4 style={{'textAlign':'center'}}>{frameworks[1].votes} Votes</h4> </Card.Description>
           {!this.state.hasVotedFor.Angular && !this.state.hasVoted ?
-           <Button onClick={this.handleVoteAngular}>Votes {frameworks[1].votes}</Button> :
+           <Button basic color='green' onClick={this.handleVoteAngular}>Votes for Angular</Button> :
             (!this.state.hasVotedFor.Angular && this.state.hasVoted ?
-            <Button disabled>Angular {frameworks[1].votes}</Button> :
-            <Button onClick={this.handleUnVoteAngular}>Unvote {frameworks[1].votes}</Button>
+            <Button basic color='green' disabled>Angular {frameworks[1].votes}</Button> :
+            <Button basic color='red' onClick={this.handleUnVoteAngular}>Remove Vote</Button>
             )
           }
+          </Card>
 
-          Name: {frameworks[2].name}
+          <Card>
+          <Image size='mini' src='https://i1.wp.com/opensourceforu.com/wp-content/uploads/2017/03/ember-js-1.png?w=690&ssl=1'/>
+          <Card.Header><h3 style={{'textAlign':'center'}}>{frameworks[2].name}</h3></Card.Header>
+          <Card.Description><h4 style={{'textAlign':'center'}}>{frameworks[2].votes} Votes</h4> </Card.Description>
           {!this.state.hasVotedFor.Ember && !this.state.hasVoted ?
-           <Button onClick={this.handleVoteEmber}>Votes {frameworks[2].votes}</Button> :
+           <Button basic color='green' onClick={this.handleVoteEmber}>Vote for Ember</Button> :
             (!this.state.hasVotedFor.Ember && this.state.hasVoted ?
-            <Button disabled>Ember {frameworks[2].votes}</Button> :
-            <Button onClick={this.handleUnVoteEmber}>Unvote {frameworks[2].votes}</Button>
+            <Button basic color='green' disabled>Ember {frameworks[2].votes}</Button> :
+            <Button basic color='red' onClick={this.handleUnVoteEmber}>Remove Vote</Button>
             )
           }
+          </Card>
 
-          Name: {frameworks[3].name}
+          <Card>
+          <Image size='mini' src='https://upload.wikimedia.org/wikipedia/commons/5/53/Vue.js_Logo.svg' />
+          <Card.Header><h3 style={{'textAlign':'center'}}>{frameworks[3].name} Votes</h3></Card.Header>
+          <Card.Description><h4 style={{'textAlign':'center'}}>{frameworks[3].votes}</h4> </Card.Description>
           {!this.state.hasVotedFor.Vue && !this.state.hasVoted ?
-           <Button onClick={this.handleVoteVue}>Votes {frameworks[3].votes}</Button> :
+           <Button basic color='green' onClick={this.handleVoteVue}>Vote for Vue</Button> :
             (!this.state.hasVotedFor.Vue && this.state.hasVoted ?
-            <Button disabled>Vue {frameworks[3].votes}</Button> :
-            <Button onClick={this.handleUnVoteVue}>Unvote {frameworks[3].votes}</Button>
+            <Button basic color ='green' disabled>Vue {frameworks[3].votes}</Button> :
+            <Button basic color ='red' onClick={this.handleUnVoteVue}>Remove Vote</Button>
             )
           }
+          </Card>
 
           <div style={{width: '500px'}}>
             <VictoryBar data={data} x='quarter' y='earnings' />
           </div>
 
-          </div> :
+          </Card.Group> :
           <Dimmer active inverted>
             <Loader inverted>Loading Framework Data</Loader>
           </Dimmer>
