@@ -3,31 +3,50 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
+import styled from 'styled-components'
+import { Image, Button, Menu } from 'semantic-ui-react'
+
+const LogoStyle = styled.div`
+  max-width: 250px;
+  margin-right: 10px;
+  margin-bottom: 1px;
+`
+
+const Links = styled.div`
+  margin-top: 25px;
+  margin-left: 700px;
+`
 
 const Navbar = ({handleClick, isLoggedIn}) => (
   <div>
-    <h1>Launchpad Labs Coding Challenge</h1>
-    <nav>
+    <Menu
+    borderless
+    attached='top'
+    >
+    <Menu.Menu>
+      <Menu.Item>
+        <LogoStyle>
+          <Link to="/data"><Image src='/launchpadlogo.png' /></Link>
+        </LogoStyle>
+      </Menu.Item>
+    </Menu.Menu>
       {isLoggedIn ? (
-        <div>
+        <Links>
           {/* The navbar will show these links after you log in */}
-          <Link to="/home">Home</Link>
-          <Link to="/voting">Vote</Link>
+          <Link to="/data"><Button color='blue'>Home</Button></Link>
+          <Link to="/voting"><Button color='blue'>Vote</Button></Link>
           <a href="#" onClick={handleClick}>
-            Logout
+            <Button color='blue'>Logout</Button>
           </a>
-        </div>
+        </Links>
       ) : (
-        <div>
+        <Links>
           {/* The navbar will show these links before you log in */}
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Sign Up</Link>
-          <Link to="/voting">Vote</Link>
-          <Link to="/data">Framework Data</Link>
-        </div>
+          <Link to="/data"><Button color='blue'>Home</Button></Link>
+          <Link to="/login"><Button color='blue'>Login</Button></Link>
+        </Links>
       )}
-    </nav>
-    <hr />
+    </Menu>
   </div>
 )
 
