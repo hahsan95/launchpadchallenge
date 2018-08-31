@@ -26,6 +26,26 @@ const User = db.define('user', {
   },
   googleId: {
     type: Sequelize.STRING
+  },
+  hasVoted: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false
+  },
+  hasVotedReact: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false
+  },
+  hasVotedAngular: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false
+  },
+  hasVotedEmber: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false
+  },
+  hasVotedVue: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false
   }
 })
 

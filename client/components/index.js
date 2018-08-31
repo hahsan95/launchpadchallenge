@@ -6,4 +6,5 @@
 export {default as Navbar} from './navbar'
 export {default as UserHome} from './user-home'
 export {default as FrameworkVoteForm} from './framework-vote-form'
+export {default as Data} from './data'
 export {Login, Signup} from './auth-form'

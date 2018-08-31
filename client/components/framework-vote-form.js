@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
-import { getFrameworksThunk } from '../store'
+import { getFrameworksThunk, me } from '../store'
 import { Button, Dimmer, Loader } from 'semantic-ui-react'
 import { VictoryBar } from 'victory'
 import axios from 'axios';
@@ -78,13 +78,13 @@ class FrameworkVoteForm extends Component {
 
   render () {
     let frameworks = this.props.frameworkList.sort((a, b) => a.id > b.id)
-
-      let data = [
+    let data = [
       {quarter: 1, earnings: 103},
       {quarter: 2, earnings: 63},
       {quarter: 3, earnings: 50},
       {quarter: 4, earnings: 42}
     ];
+
     return(
       <div>
         {
