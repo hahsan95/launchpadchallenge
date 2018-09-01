@@ -104,7 +104,7 @@ let mainFunction = () => {
 }
 
 let functionRunner = (func) => {
-  // func()
+  func()
   setInterval(func, 3600000)
 }
 

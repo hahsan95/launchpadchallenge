@@ -15,10 +15,10 @@ async function seed() {
   ])
 
   const frameworks = await Promise.all([
-    Framework.create({name: 'React'}),
-    Framework.create({name: 'Angular'}),
-    Framework.create({name: 'Ember'}),
-    Framework.create({name: 'Vue'})
+    Framework.create({id: 1, name: 'React', votes: 17}),
+    Framework.create({id: 2, name: 'Angular', votes: 12}),
+    Framework.create({id: 3, name: 'Ember', votes: 6}),
+    Framework.create({id: 4, name: 'Vue', votes: 2})
   ])
 
   console.log(`seeded ${users.length} users!`)

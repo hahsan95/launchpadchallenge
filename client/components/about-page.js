@@ -57,8 +57,8 @@ export default class AboutPage extends Component {
           </p>
           <List>
             <Flex>
-            <a href='https://github.com/hahsan95/launchpadchallenge'><Icon name ='linkedin square' color='blue' size='huge' /></a>
-            <a href='https://www.linkedin.com/in/homumahsan/'><Icon name='github square' color='blue' size='huge' /></a>
+            <a href='https://www.linkedin.com/in/homumahsan/'><Icon name='linkedin square' color='blue' size='huge' /></a>
+            <a href='https://github.com/hahsan95/launchpadchallenge'><Icon name ='github square' color='blue' size='huge' /></a>
             </Flex>
           </List>
         </Segment>
