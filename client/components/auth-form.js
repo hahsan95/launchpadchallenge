@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
-import {auth} from '../store'
+import {auth, newUserThunk} from '../store'
 import { Button, Form, Header } from 'semantic-ui-react'
 import styled from 'styled-components'
 
@@ -19,32 +19,58 @@ const HeaderStyle = styled.div`
  * COMPONENT
  */
 const AuthForm = props => {
-  const {name, displayName, handleSubmit, error} = props
+  const {name, displayName, handleSubmit, handleNewUser, error} = props
 
   return (
+    // <div>
+    //   <Form>
+    //     <form onSubmit={handleSubmit} name={name}>
+    //       <div>
+    //         <label htmlFor="email">
+    //           <small>Email</small>
+    //         </label>
+    //         <input name="email" type="text" />
+    //       </div>
+    //       <div>
+    //         <label htmlFor="password">
+    //           <small>Password</small>
+    //         </label>
+    //         <input name="password" type="password" />
+    //       </div>
+    //       <ButtonStyle>
+    //         <Button type="submit">{displayName}</Button>
+    //       </ButtonStyle>
+    //       {error && error.response && <div> {error.response.data} </div>}
+    //     </form>
+    //   </Form>
+    // </div>
+
     <div>
-      <HeaderStyle><Header as='h2'>Log In</Header></HeaderStyle>
-      <Form>
-        <form onSubmit={handleSubmit} name={name}>
-          <div>
-            <label htmlFor="email">
-              <small>Email</small>
-            </label>
-            <input name="email" type="text" />
-          </div>
-          <div>
-            <label htmlFor="password">
-              <small>Password</small>
-            </label>
-            <input name="password" type="password" />
-          </div>
-          <ButtonStyle>
-            <Button type="submit">{displayName}</Button>
-          </ButtonStyle>
-          {error && error.response && <div> {error.response.data} </div>}
-        </form>
-      </Form>
-    </div>
+    <HeaderStyle><Header as='h2'>Log In</Header></HeaderStyle>
+    <Form>
+    <form onSubmit={(displayName === 'Sign Up') ? handleNewUser : handleSubmit} name={name}>
+      {displayName === 'Sign Up' &&
+      <div>
+        <label htmlFor="name"><small>Name</small></label>
+        <input name="name" type="text" />
+      </div>}
+      <div>
+        <label htmlFor="email"><small>Email</small></label>
+        <input name="email" type="text" />
+      </div>
+      <div>
+        <label htmlFor="password"><small>Password</small></label>
+        <input name="password" type="password" />
+      </div>
+      <div>
+      <ButtonStyle>
+        <Button type="submit">{displayName}</Button>
+      </ButtonStyle>
+      </div>
+      {error && error.response && <div> {error.response.data} </div>}
+    </form>
+    </Form>
+  </div>
   )
 }
 
@@ -79,6 +105,14 @@ const mapDispatch = dispatch => {
       const email = evt.target.email.value
       const password = evt.target.password.value
       dispatch(auth(email, password, formName))
+    },
+    handleNewUser (evt) {
+      evt.preventDefault()
+      const name = evt.target.name.value
+      const email = evt.target.email.value
+      const password = evt.target.password.value
+      dispatch(newUserThunk(name, email, password))
+      history.push('/')
     }
   }
 }
