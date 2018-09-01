@@ -47,7 +47,11 @@ export default class AboutPage extends Component {
               </List>
             </ListWrapper>}
 
-            Firstly, I chose commits as they provide an accurate depiction of development activity. Meanwhile, forks and pull requests also provide a depiction of development activity, with the added benefit of also depicting community support and involvement. In aggregate, I believe these three choices present the user with enough information to cast an educated vote. Below is a link to the GitHub repo. Additionally, feel free to reach out to me on LinkedIn.
+            Firstly, I chose commits as they provide an accurate depiction of development activity. Meanwhile, forks and pull requests also provide a depiction of development activity, with the added benefit of also depicting community support and involvement. In aggregate, I believe these three choices present the user with enough information to cast an educated vote. A new GitHub API call is made every hour, effectively refreshing the data on the same timeframe.
+
+            With regard to challenges, currently, there is no option to create new accounts or Google OAuth. Although I originally intended to add these, in the interest of time, I opted to use pre-created accounts instead. Other challenges include vote persistance, such that each user and browser session could only vote once. I solved this problem by storing vote data for each user in a PostgreSQL databse as opposed to storing it on state, as I did originally.
+
+            Below is a link to the GitHub repo. Additionally, feel free to reach out to me on LinkedIn.
           </p>
           <List>
             <Flex>
