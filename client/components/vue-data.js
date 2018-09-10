@@ -36,9 +36,9 @@ class VueData extends Component {
       <Wrapper>
         <Segment>
           <h3>Vue</h3>
-          <Progress color='green' active  size='small' value={vueforks} total={30}>{vueforks} Forks</Progress>
-          <Progress color='green' active  size='small' value={vuecommits} total={40}>{vuecommits} Commits</Progress>
-          <Progress color='green' active  size='small' value={vueprs} total={40}>{vueprs} Pull Requests</Progress>
+          <Progress color='green' active  size='small' value={vueforks} total={100}>{vueforks} Forks</Progress>
+          <Progress color='green' active  size='small' value={vuecommits} total={100}>{vuecommits} Commits</Progress>
+          <Progress color='green' active  size='small' value={vueprs} total={100}>{vueprs} Pull Requests</Progress>
         </Segment>
       </Wrapper>
     )

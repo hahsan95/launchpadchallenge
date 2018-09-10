@@ -34,9 +34,9 @@ class EmberData extends Component {
       <Wrapper>
         <Segment>
           <h3>Ember</h3>
-          <Progress color='orange' active  size='small' value={forks} total={30}>{forks} Forks</Progress>
-          <Progress color='orange' active  size='small' value={commits} total={40}>{commits} Commits</Progress>
-          <Progress color='orange' active  size='small' value={prs} total={40}>{prs} Pull Requests</Progress>
+          <Progress color='orange' active  size='small' value={forks} total={100}>{forks} Forks</Progress>
+          <Progress color='orange' active  size='small' value={commits} total={100}>{commits} Commits</Progress>
+          <Progress color='orange' active  size='small' value={prs} total={100}>{prs} Pull Requests</Progress>
         </Segment>
         <Divider />
       </Wrapper>
